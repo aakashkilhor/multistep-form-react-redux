@@ -1,6 +1,5 @@
 import { createStore } from 'redux';
 
-// Define the initial state of the form
 const initialState = {
   step: 1,
   formData: {
@@ -16,8 +15,6 @@ const initialState = {
     about: '',
   },
 };
-
-// Define the reducer function
 const allReducers = (state = initialState, action) => {
   switch (action.type) {
     case 'NEXT_STEP':
@@ -42,8 +39,6 @@ const allReducers = (state = initialState, action) => {
       return state;
   }
 };
-
-// Load state from local storage
 const loadFromLocalStorage = () => {
   try {
     const storedData = localStorage.getItem('reduxState');
@@ -55,14 +50,10 @@ const loadFromLocalStorage = () => {
     return undefined;
   }
 };
-
-// Create the Redux store with the middleware and initial state
 const store = createStore(
   allReducers,
   loadFromLocalStorage(),
-  // applyMiddleware(saveToLocalStorage)
 );
-
 store.subscribe(() => {
   localStorage.setItem("reduxState", JSON.stringify(store.getState()));
 });
