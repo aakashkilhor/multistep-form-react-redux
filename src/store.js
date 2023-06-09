@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware } from 'redux';
-// import { composeWithDevTools } from 'redux-devtools-extension';
 
 // Define the initial state of the form
 const initialState = {
