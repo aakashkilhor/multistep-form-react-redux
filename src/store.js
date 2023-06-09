@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 
 // Define the initial state of the form
 const initialState = {
@@ -18,7 +18,7 @@ const initialState = {
 };
 
 // Define the reducer function
-const formReducer = (state = initialState, action) => {
+const allReducers = (state = initialState, action) => {
   switch (action.type) {
     case 'NEXT_STEP':
       return {
@@ -43,24 +43,14 @@ const formReducer = (state = initialState, action) => {
   }
 };
 
-// Middleware to save the Redux state to local storage
-const saveToLocalStorage = (store) => (next) => (action) => {
-  const result = next(action); // Call the next middleware or reducer
-
-  // Save the state to local storage
-  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
-
-  return result;
-};
-
 // Load state from local storage
 const loadFromLocalStorage = () => {
   try {
-    const serializedState = localStorage.getItem('reduxState');
-    if (serializedState === null) {
+    const storedData = localStorage.getItem('reduxState');
+    if (storedData === null) {
       return undefined;
     }
-    return JSON.parse(serializedState);
+    return JSON.parse(storedData);
   } catch (error) {
     return undefined;
   }
@@ -68,10 +58,14 @@ const loadFromLocalStorage = () => {
 
 // Create the Redux store with the middleware and initial state
 const store = createStore(
-  formReducer,
+  allReducers,
   loadFromLocalStorage(),
-  applyMiddleware(saveToLocalStorage)
+  // applyMiddleware(saveToLocalStorage)
 );
+
+store.subscribe(() => {
+  localStorage.setItem("reduxState", JSON.stringify(store.getState()));
+});
 
 export default store;
 
