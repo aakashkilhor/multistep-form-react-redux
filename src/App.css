@@ -1,4 +1,3 @@
-/* MultiStepForm.css */
 body{
   margin-left: 10vw;
   margin-top: 10vh;
@@ -8,38 +7,27 @@ body{
 }
 .form-step {
   margin-bottom: 20px;
-  margin-left: 80px;
   display: flex;
-  border: 2px solid black;
 }
-
 h2 {
   font-size: 18px;
   margin-bottom: 10px;
 }
-.h2{
-  margin-left: 100px;
-}
-
 form {
   display: flex;
   flex-direction: column;
   max-width: 400px;
 }
-
 label {
   margin-left: 20px;
   margin-bottom: 10px;
   font-size: 20px;
 }
-
-input,
-textarea {
+input, textarea {
   padding: 5px;
   float: right;
   margin-bottom: 10px;
 }
-
 button[type='submit'] {
   background-color: #4caf50;
   color: white;
@@ -51,17 +39,14 @@ button[type='submit'] {
   cursor: pointer;
   align-self: center;
 }
-
 button[type='submit']:hover {
   background-color: #45a049;
 }
-
 button[disabled] {
   background-color: #cccccc;
   cursor: not-allowed;
   display: none;
 }
-
 button[type='button'] {
   background-color: #808080;
   color: white;
@@ -69,7 +54,6 @@ button[type='button'] {
   border: none;
   cursor: pointer;
 }
-
 button[type='button']:hover {
   background-color: #6b6b6b;
 }

@@ -1,5 +1,3 @@
-import React from 'react';
-import './MultiStepForm.css'; 
 import { useSelector, useDispatch } from 'react-redux';
 
 const MultiStepForm = () => {

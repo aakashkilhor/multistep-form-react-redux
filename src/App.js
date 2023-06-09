@@ -1,4 +1,4 @@
-import MultiStepForm from './components/Stash';
+import MultiStepForm from './components/MultiStepForm';
 import './App.css';
 
 function App() {
