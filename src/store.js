@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-// import { createStore } from 'redux';
+// import { composeWithDevTools } from 'redux-devtools-extension';
 
 // Define the initial state of the form
 const initialState = {
@@ -45,11 +44,6 @@ const formReducer = (state = initialState, action) => {
   }
 };
 
-// Create the Redux store
-
-
-// Define your reducer (formReducer) and initial state here
-
 // Middleware to save the Redux state to local storage
 const saveToLocalStorage = (store) => (next) => (action) => {
   const result = next(action); // Call the next middleware or reducer
@@ -77,7 +71,7 @@ const loadFromLocalStorage = () => {
 const store = createStore(
   formReducer,
   loadFromLocalStorage(),
-  composeWithDevTools(applyMiddleware(saveToLocalStorage))
+  applyMiddleware(saveToLocalStorage)
 );
 
 export default store;
